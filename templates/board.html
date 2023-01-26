@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} Boggle {% endblock %} 
+
+{% block content %} 
+
+<h2 id="timer-label">Time Remaining: <b id="timer"></b> seconds</h2>
+
+<table>
+
+{% for row in game_board %} 
+
+<tr>
+
+    {% for char in row %} 
+
+    <td>{{char}}</td>
+
+    {% endfor %}
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<table>
+    <tr>
+        <td id="guess-response">Enter a guess for feedback!</td>
+    </tr>
+    <tr>
+        <td>Current Score:</td>
+        <td id="current-score">0</td>
+    </tr>
+</table>
+
+<!-- <p id="guess-response"></p>
+<p id=""></p><p id="score">0</p> -->
+<form action="/handle-guess" method="GET" id="guess-form">
+    <label for="guess">Enter a Guess: </label><input type="text" name="guess" placeholder="cat" id="user-guess">
+    <button id="submit">Submit!</button>
+</form>
+
+{% endblock %}
